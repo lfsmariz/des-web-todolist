@@ -41,21 +41,63 @@ const DoneComponent = (props) => {
     setTasks(alterValue);
   }
 
-  return(
+  const listItems = () => {
+    return(
     tasks.map((element) => {
       if (element.done) {
         return(
-          <li key={element.id}> 
-            <input type="checkbox" name={element.description} id={element.id} onChange={moveAction} checked={element.done}/>
-            {element.description}
-            <input type="text" id={element.id} value={element.stageDescription} onChange={handleEditStaged}/>
-            <button type="button" id={element.id} onClick={editAction}>Editar</button>
-            <button type="button" id={element.id} onClick={removeAction}>Excluir</button>
+          <li key={element.id} className="list-group-item ">
+            <div className="row justify-content-between align-items-center">
+              <div className="col-1">
+              <input type="checkbox" name={element.description} id={element.id} onChange={moveAction} checked={element.done} class="btn-check"/>
+              <label class="btn btn-primary" for={element.id}>Desfazer</label>
+              </div>
+              <div className="col-4">
+                <p className="center-text">
+                  {element.description}
+                </p>
+              </div>
+              <div className="col-4">
+              <input type="text" className="form-control" id={element.id} value={element.stageDescription} onChange={handleEditStaged}/>
+              </div>
+              <div className="col-2">
+              <button type="button" id={element.id} className="btn btn-success w-100" onClick={editAction}>Editar</button>
+              </div>
+
+              <div className="col">
+              <button type="button" id={element.id}  className="btn btn-danger" onClick={removeAction}>Excluir</button>
+              </div>
+            </div>
           </li>
         )
       }
     })
+    )
+  }
+
+  return(
+    <ul className="list-group list-group">
+   { listItems()}
+    </ul>
   )
+
+  // return(
+  //   tasks.map((element) => {
+  //     if (element.done) {
+  //       return(
+  //         <div class="container">
+  //           <li key={element.id}> 
+  //             <input type="checkbox" name={element.description} id={element.id} onChange={moveAction} checked={element.done}/>
+  //             {element.description}
+  //             <input type="text" id={element.id} value={element.stageDescription} onChange={handleEditStaged}/>
+  //             <button type="button" id={element.id} className="btn btn-success" onClick={editAction}>Editar</button>
+  //             <button type="button" id={element.id} className="btn btn-danger" onClick={removeAction}>Excluir</button>
+  //           </li>
+  //         </div>
+  //       )
+  //     }
+  //   })
+  // )
 
 }
 

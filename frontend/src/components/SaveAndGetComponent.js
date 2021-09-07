@@ -27,10 +27,18 @@ const SaveAndGetComponent = (props) => {
   }
 
   return(
-    <div>
-      <button type="button" onClick={saveAction}>Salvar Tasks</button>
-      <button type="button" onClick={getAction}>Recuperar Tasks</button>
-    </div>
+    <>
+      <div className="col">
+        <div className="row p-3">
+          <button type="button" className="btn btn-secondary" onClick={saveAction}>Salvar Tasks</button>
+        </div>
+      </div>
+      <div className="col">
+        <div className="row p-3">
+          <button type="button" className="btn btn-secondary" onClick={getAction}>Recuperar Tasks</button>
+        </div>
+      </div>
+    </>
   )
 
 }

@@ -33,21 +33,35 @@ const ToDoPage = () => {
 
 
   return(
-    <div>
-      <h1>Lista de Tarefas</h1>
-      <p>Adaptado por Luiz Filipe S Mariz, 2021</p>
-      <input type="text" placeholder="digite aqui" value={input} onChange={handleInput}/>
-      <button type="button" onClick={addTask}>+</button>
-
-      <h2>A fazer</h2>
+    <div className="container my-5">
+      <div className="row">
+        <div className="col center-text">
+          <h1>Lista de Tarefas</h1>
+          <p>Adaptado por Luiz Filipe S Mariz, 2021</p>
+        </div>
+        </div>
+        <form>
+          <div className="row my-3">
+            <input type="text" className="form-control" placeholder="digite aqui" value={input} onChange={handleInput}/>
+          </div>
+          <div className="row my-3">
+            <button type="button" className="btn btn-success" onClick={addTask}>Adicionar Item</button>
+          </div>
+          <div className="row my-3">
+            <h3 className="center-text">Ações padrão</h3>
+            <SaveAndGetComponent tasks={tasks} setTasks={setTasks}/>
+          </div>
+        </form>
+        <div className="row mt-5">
+          <h2 className="center-text" >Tarefas a Fazer</h2>
+        </div>
         <ToDoComponent tasks={tasks} setTasks={setTasks} />
-      <h2>Feito</h2>
+        <div className="row mt-5">
+          <h2 className="center-text" >Tarefas Feitas</h2>
+        </div>
         <DoneComponent tasks={tasks} setTasks={setTasks}/>
 
-      <div>
-        <h3>Ações padrão</h3>
-        <SaveAndGetComponent tasks={tasks} setTasks={setTasks}/>
-      </div>
+      
     </div>
   )
 }
